@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MessagingConsumer"
+	targetNamespace="http://gcube-system.org/namespaces/messaging/common/consumer"
+	xmlns:tns="http://gcube-system.org/namespaces/messaging/common/consumer"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
+	xmlns:wsrpw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/03/addressing"
+	xmlns:coretypes="http://gcube-system.org/namespaces/common/core/types"
+	xmlns:corefaults="http://gcube-system.org/namespaces/common/core/faults"
+	xmlns:provider="http://gcube-system.org/namespaces/common/core/porttypes/GCUBEProvider">
+
+
+
+	<import
+		namespace="http://gcube-system.org/namespaces/common/core/porttypes/GCUBEProvider"
+		location="../gcube/common/core/providers/GCUBEProvider.wsdl" />
+	<import namespace="http://gcube-system.org/namespaces/common/core/faults"
+		location="../gcube/common/core/faults/GCUBEFaults.wsdl" />
+
+	<types>
+		<xsd:schema
+			targetNamespace="http://gcube-system.org/namespaces/messaging/common/consumer">
+			<xsd:import namespace="http://gcube-system.org/namespaces/common/core/types"
+				schemaLocation="../gcube/common/core/types/GCUBETypes.xsd" />
+
+			<xsd:element name="queryMonitoringDB" type="xsd:string" />
+			<xsd:element name="queryMonitoringDBResponse" type="xsd:string" />
+
+			<xsd:element name="queryAccountingDB" type="xsd:string" />
+			<xsd:element name="queryAccountingDBResponse" type="xsd:string" />
+
+			<xsd:element name="backupMonitoringDB" type="coretypes:VOID" />
+			<xsd:element name="backupMonitoringDBResponse" type="coretypes:VOID" />
+
+			<xsd:element name="backupAccountingDB" type="coretypes:VOID" />
+			<xsd:element name="backupAccountingDBResponse" type="coretypes:VOID" />
+
+			<xsd:element name="queryAccountingDB" type="xsd:string" />
+			<xsd:element name="queryAccountingDBResponse" type="xsd:string" />
+
+			<xsd:element name="querySystemAccountingDB" type="xsd:string" />
+			<xsd:element name="querySystemAccountingDBResponse" type="xsd:string" />
+
+			<xsd:complexType name="SendReport">
+				<xsd:sequence>
+					<xsd:element name="date" type="xsd:string" minOccurs="1"
+						maxOccurs="1" nillable="false" />
+					<xsd:element name="scope" type="xsd:string" minOccurs="1"
+						maxOccurs="1" nillable="false" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="sendReport" type="tns:SendReport" />
+			<xsd:element name="sendReportResponse" type="coretypes:VOID" />
+
+		</xsd:schema>
+	</types>
+
+	<!--
+		============================================================ M E S S A
+		G E S ============================================================
+	-->
+
+	<message name="sendReportInputMessage">
+		<part name="request" element="tns:sendReport" />
+	</message>
+
+	<message name="sendReportOutputMessage">
+		<part name="response" element="tns:sendReportResponse" />
+	</message>
+
+	<message name="backupMonitoringDBInputMessage">
+		<part name="request" element="tns:backupMonitoringDB" />
+	</message>
+
+	<message name="backupMonitoringDBOutputMessage">
+		<part name="response" element="tns:backupMonitoringDBResponse" />
+	</message>
+
+	<message name="backupAccountingDBInputMessage">
+		<part name="request" element="tns:backupAccountingDB" />
+	</message>
+
+	<message name="backupAccountingDBOutputMessage">
+		<part name="response" element="tns:backupAccountingDBResponse" />
+	</message>
+
+	<message name="queryMonitoringDBInputMessage">
+		<part name="request" element="tns:queryMonitoringDB" />
+	</message>
+
+	<message name="queryMonitoringDBOutputMessage">
+		<part name="response" element="tns:queryMonitoringDBResponse" />
+	</message>
+
+	<message name="queryAccountingDBInputMessage">
+		<part name="request" element="tns:queryAccountingDB" />
+	</message>
+
+	<message name="queryAccountingDBOutputMessage">
+		<part name="response" element="tns:queryAccountingDBResponse" />
+	</message>
+
+	<message name="querySystemAccountingDBInputMessage">
+		<part name="request" element="tns:querySystemAccountingDB" />
+	</message>
+
+	<message name="querySystemAccountingDBOutputMessage">
+		<part name="response" element="tns:querySystemAccountingDBResponse" />
+	</message>
+
+
+
+	<!--
+		============================================================ P O R T T
+		Y P E ============================================================
+	-->
+	<portType name="MessagingConsumerPortType" wsdlpp:extends="provider:GCUBEProvider">
+
+		<operation name="sendReport">
+			<input message="tns:sendReportInputMessage" />
+			<output message="tns:sendReportOutputMessage" />
+			<fault name="fault" message="corefaults:GCUBEFaultMessage"></fault>
+		</operation>
+		<operation name="queryMonitoringDB">
+			<input message="tns:queryMonitoringDBInputMessage" />
+			<output message="tns:queryMonitoringDBOutputMessage" />
+			<fault name="fault" message="corefaults:GCUBEFaultMessage"></fault>
+		</operation>
+		<operation name="queryAccountingDB">
+			<input message="tns:queryAccountingDBInputMessage" />
+			<output message="tns:queryAccountingDBOutputMessage" />
+			<fault name="fault" message="corefaults:GCUBEFaultMessage"></fault>
+		</operation>
+		<operation name="querySystemAccountingDB">
+			<input message="tns:querySystemAccountingDBInputMessage" />
+			<output message="tns:querySystemAccountingDBOutputMessage" />
+			<fault name="fault" message="corefaults:GCUBEFaultMessage"></fault>
+		</operation>
+		<operation name="backupMonitoringDB">
+			<input message="tns:backupMonitoringDBInputMessage" />
+			<output message="tns:backupMonitoringDBOutputMessage" />
+			<fault name="fault" message="corefaults:GCUBEFaultMessage"></fault>
+		</operation>
+		<operation name="backupAccountingDB">
+			<input message="tns:backupAccountingDBInputMessage" />
+			<output message="tns:backupAccountingDBOutputMessage" />
+			<fault name="fault" message="corefaults:GCUBEFaultMessage"></fault>
+		</operation>
+
+
+	</portType>
+
+</definitions>
+
+

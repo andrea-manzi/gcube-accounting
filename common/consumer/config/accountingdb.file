@@ -1,0 +1,242 @@
+<root>
+	<NODEACCOUNTING>
+	CREATE TABLE IF NOT EXISTS NODEACCOUNTING  (
+							GHNName                                     VARCHAR(64) NOT NULL,
+							ServiceClass                       			VARCHAR(64) NOT NULL,
+ 	                        ServiceName									VARCHAR(128) NOT NULL,
+ 	                        callerScope 	                            VARCHAR(128) NOT NULL,
+ 	                        startDate									DATETIME  NOT NULL,
+ 	                        endDate										DATETIME  NOT NULL,
+ 	                        timeframe									INTEGER  NOT NULL,
+ 	                        invocationNumber							INTEGER  NOT NULL,
+ 	                        averageInvocationTime						FLOAT  NOT NULL,
+ 	                        callerIP									VARCHAR(128) NOT NULL,
+ 	                        PRIMARY KEY (GHNName,ServiceClass,ServiceName,callerScope,startDate,callerIP),
+ 	                        INDEX(GHNName),
+ 	                        INDEX(ServiceClass,ServiceName),
+ 	                        INDEX(callerScope)
+					);
+	</NODEACCOUNTING>
+	<EVENT>
+	CREATE EVENT IF NOT EXISTS Clean_Accounting_db
+ 		ON SCHEDULE EVERY 1 DAY
+ 		DO DELETE FROM NODEACCOUNTING WHERE averageInvocationTime > 1000;
+    </EVENT>
+	<PORTAL>
+	CREATE TABLE IF NOT EXISTS PORTALACCOUNTING (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							user										VARCHAR(64) NOT NULL,
+							vre											VARCHAR(128) NOT NULL,
+							date										DATE NOT NULL,
+							time										TIME NOT NULL,
+							type										VARCHAR(64) NOT NULL
+					);
+	</PORTAL>
+	<COLLECTION>
+	CREATE TABLE IF NOT EXISTS COLLECTION (
+							Id											VARCHAR(64) NOT NULL,
+							identifier									VARCHAR(128) NOT NULL,
+							name										VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, identifier, name),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+							);
+   	</COLLECTION>
+   	<TERM>
+	CREATE TABLE IF NOT EXISTS TERM (
+							Id											VARCHAR(64) NOT NULL ,
+							name										VARCHAR(128) NOT NULL,
+							value										VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, name, value),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+							);
+   	</TERM>
+   	<ADVANCEDSEARCH>
+	CREATE TABLE IF NOT EXISTS ADVANCEDSEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							operator									VARCHAR(10) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</ADVANCEDSEARCH>
+	<SIMPLESEARCH>
+	CREATE TABLE IF NOT EXISTS SIMPLESEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							termValue									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</SIMPLESEARCH>
+	<BROWSE>
+	CREATE TABLE IF NOT EXISTS BROWSE (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							browseBy									VARCHAR(128) NOT NULL,
+							isDistinct									BOOLEAN,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</BROWSE>
+	<LOGIN>
+	CREATE TABLE IF NOT EXISTS LOGIN (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							message 									VARCHAR(128) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</LOGIN>
+	<GENERIC>
+	CREATE TABLE IF NOT EXISTS GENERIC (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							message 									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GENERIC>		
+	<CONTENT>
+	CREATE TABLE IF NOT EXISTS CONTENT (
+							Id											VARCHAR(64) NOT NULL ,
+							identifier									VARCHAR(128) NOT NULL,
+							name										VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, identifier, name),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+							);
+   	</CONTENT>
+   	<QUICKEARCH>
+	CREATE TABLE IF NOT EXISTS QUICKSEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							termValue									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</QUICKEARCH>
+	<GOOGLESEARCH>
+	CREATE TABLE IF NOT EXISTS GOOGLESEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							termValue									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GOOGLESEARCH>
+	<AIS>
+	CREATE TABLE IF NOT EXISTS AIS (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							IDENTIFIER									VARCHAR(256) NOT NULL,
+							NAME										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</AIS>
+	<TS>
+	CREATE TABLE IF NOT EXISTS TS (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							TITLE										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</TS>
+	<HL>
+	CREATE TABLE IF NOT EXISTS HL (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							IDENTIFIER									VARCHAR(256) NOT NULL,
+							NAME										VARCHAR(256) NOT NULL,
+							TYPE										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</HL>
+	<GCUBEUSERSADDRESSEES>
+	CREATE TABLE IF NOT EXISTS GCUBEUSERSADDRESSEES (
+							Id											VARCHAR(64) NOT NULL,
+							NAME										VARCHAR(256) NOT NULL,
+							VRE										    VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, NAME, VRE),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GCUBEUSERSADDRESSEES>
+	<ANNOTATION>
+	CREATE TABLE IF NOT EXISTS ANNOTATION (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							NAME										VARCHAR(256) NOT NULL,
+							ACTION										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</ANNOTATION>		
+	<REPORT>
+	CREATE TABLE IF NOT EXISTS REPORT (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							SUBTYPE										VARCHAR(256),
+							TEMPLATEID									VARCHAR(256),
+							TEMPLATENAME								VARCHAR(256),
+							AUTHOR										VARCHAR(256),
+							NAME										VARCHAR(256),
+							MIMETYPE									VARCHAR(256),
+							TYPE										VARCHAR(256),	
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</REPORT>	
+	<WEBAPP>
+	CREATE TABLE IF NOT EXISTS WEBAPP (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							SUBTYPE										VARCHAR(256),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</WEBAPP>	
+	<WEBAPPDETAIL>
+	CREATE TABLE IF NOT EXISTS WEBAPPDETAIL (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,							
+							WEBAPPID									VARCHAR(256),
+							WEBAPPNAME									VARCHAR(256),
+							WEBAPPVERSION								VARCHAR(64),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</WEBAPPDETAIL>		
+	<GHNDETAIL>
+	CREATE TABLE IF NOT EXISTS GHNDETAIL (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,							
+							GHNID										VARCHAR(256),
+							GHNNAME										VARCHAR(256),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GHNDETAIL>
+	<DOCUMENTWORKFLOW>
+	CREATE TABLE IF NOT EXISTS DOCUMENTWORKFLOW (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							SUBTYPE										VARCHAR(256),
+							WORKFLOWID									VARCHAR(256),
+							REPORTNAME									VARCHAR(256),	
+							STEPNUMBER									VARCHAR(64),	
+							STATUS										VARCHAR(256),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</DOCUMENTWORKFLOW>	
+	<AQUAMAPS>
+	CREATE TABLE IF NOT EXISTS AQUAMAPS (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							TITLE										VARCHAR(256),
+							AQUAMAPSTYPE								VARCHAR(256),
+							SUBTYPE										VARCHAR(256),	
+							SPECIESCOUNT								INTEGER  NOT NULL,
+							GIS											VARCHAR(64),	
+							HSPECID										VARCHAR(256),	
+							OBJECTID									VARCHAR(256),	
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</AQUAMAPS>	
+	<WAR>
+	CREATE TABLE IF NOT EXISTS WAR (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							SUBTYPE										VARCHAR(256),
+							WARID										VARCHAR(256),
+							WARNAME										VARCHAR(256),	
+							WEBAPPNAME									VARCHAR(256),	
+							WEBAPPVERSION								VARCHAR(256),
+							CATEGORY									VARCHAR(256),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</WAR>		
+	<SM>
+	CREATE TABLE IF NOT EXISTS SM (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							SUBTYPE										VARCHAR(256),
+							FILENAME									VARCHAR(256),
+							FILETYPE									VARCHAR(256),	
+							ALGORITHMNAME								VARCHAR(256),	
+							EXECUTIONOUTCOME							VARCHAR(256),
+							EXECUTIONTIME								VARCHAR(256),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</SM>																											
+</root>

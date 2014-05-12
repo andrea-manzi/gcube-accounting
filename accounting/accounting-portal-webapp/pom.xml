@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>maven-parent</artifactId>
+		<groupId>org.gcube.tools</groupId>
+		<version>1.0.0</version>
+		<relativePath />
+	</parent>
+
+	<groupId>org.gcube.messaging</groupId>
+	<artifactId>accounting-portal-webapp</artifactId>
+	<packaging>war</packaging>
+	<version>1.1.0-SNAPSHOT</version>
+	<name>accounting-portal-webapp Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.gcube.distribution</groupId>
+				<artifactId>maven-portal-bom</artifactId>
+				<version>LATEST</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+
+	<properties>
+		<distroDirectory>distro</distroDirectory>
+		<tomcat.version>7.0.42</tomcat.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.gcube.messaging</groupId>
+			<artifactId>messages</artifactId>
+			<version>[1.4.0-SNAPSHOT, 2.0.0-SNAPSHOT)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gcube.messaging</groupId>
+			<artifactId>producer-fws</artifactId>
+			<version>[1.0.0-SNAPSHOT, 2.0.0-SNAPSHOT)</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gcube.common.portal</groupId>
+			<artifactId>portal-manager</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0-SNAPSHOT)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!-- ***************** test ******************* -->
+
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-depchain</artifactId>
+			<version>2.0.0-beta-2</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-logging-log4j</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>accounting-portal-webapp</finalName>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>LATEST</version>
+					<executions>
+						<execution>
+							<id>tomcat-run</id>
+							<goals>
+								<goal>exec-war-only</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<warRunDependencies>
+									<warRunDependency>
+										<dependency>
+											<groupId>org.gcube.messaging</groupId>
+											<artifactId>accounting-portal-webapp</artifactId>
+											<version>LATEST</version>
+											<type>war</type>
+										</dependency>
+										<contextPath>/</contextPath>
+									</warRunDependency>
+								</warRunDependencies>
+								<!-- naming is disabled by default so use true to enable it -->
+								<enableNaming>true</enableNaming>
+
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<configuration>
+						<descriptors>
+							<descriptor>${distroDirectory}/descriptor.xml</descriptor>
+						</descriptors>
+					</configuration>
+					<executions>
+						<execution>
+							<id>servicearchive</id>
+							<phase>install</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

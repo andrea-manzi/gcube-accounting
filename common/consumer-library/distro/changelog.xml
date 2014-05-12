@@ -1,0 +1,16 @@
+<ReleaseNotes>
+	<Changeset component="org.gcube.messaging.consumer-library.2-2-0" date="2014-04-04">
+		<Change>Added SM query</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.consumer-library.2-1-0" date="2013-22-19">
+		<Change>removed gCF rependencies</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.consumer-library.2-0-0" date="2013-04-19">
+		<Change>porting to FWS stack</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.consumer-library.1-6-0" date="2013-01-12">
+		<Change>new Maven based project structure</Change>
+		<Change>Including High Level calls</Change>
+		<Change>compliant to CL framework</Change>
+	</Changeset>
+</ReleaseNotes>

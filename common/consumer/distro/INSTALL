@@ -1,0 +1,8 @@
+To install the Consumer  you need the following requirements:
+	
+  * The Service GAR.
+  * The Dependency JAR as declared in the Service Profile.
+
+First of all you need a GHN properly configured.
+
+	

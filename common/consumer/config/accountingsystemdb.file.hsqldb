@@ -1,0 +1,10 @@
+<root>
+	<ACCOUNTINGSYTEMTYPE>
+	CREATE TABLE  ACCOUNTINGSYTEMTYPE
+	(
+		Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+		AccountingTypeName							VARCHAR(128) NOT NULL,
+		
+	);
+	</ACCOUNTINGSYTEMTYPE>							
+</root>

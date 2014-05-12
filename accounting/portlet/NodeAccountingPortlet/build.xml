@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+
+<!--
+This build file is used to build liferay portlets in gCube project.
+
+This script is suitable for performing builds either on ETICS or
+on your development local machine.
+
+In case you are using this script on your local machine, please make sure:
+- (*) GWT_HOME is set and points to the gwt distribution directory
+- (*) PORTAL_HOME is set and points to the portal distribution directory
+- all other needed dependencies (e.g. other gcube services/stubs) are 
+  in CLASSPATH environment variable
+
+* only if your portlet depends on them
+-->
+
+<project name="portlet" basedir="." default="compile">
+
+	<!-- load properties from file -->
+	<property file="build.properties"/>
+	
+	<!-- load environment variables -->
+	<property environment="env"/>
+	
+	
+	<!-- ================================================================== -->
+	<!-- ===                       SET CLASSPATH                        === -->
+	<!-- ================================================================== -->	
+	<path id="portal.classpath"/>
+	
+	<path id="gwt.classpath"/>
+	
+	<path id="project.classpath">
+		<!-- Leave this line commented. External dependenices are expected to be handled using ETICS -->
+		<!-- <fileset dir="war/WEB-INF/lib" includes="*.jar"/> -->
+	
+		<pathelement path="${java.class.path}/"/>
+		<pathelement location="src"/>
+	</path>	
+	
+	<path id="classpath">
+		<path refid="gwt.classpath"/>
+		<path refid="portal.classpath"/>
+		<path refid="project.classpath"/>
+	</path>
+	
+
+	<target name="check-env">
+		<condition property="portal-env-exist">
+				<not>
+					<equals arg1="${env.PORTAL_HOME}" arg2="$${env.PORTAL_HOME}"/>
+				</not>
+		</condition>
+		<condition property="gwt-env-exist">
+			<not>
+				<equals arg1="${env.GWT_HOME}" arg2="$${env.GWT_HOME}"/>
+			</not>
+		</condition>
+	</target>
+	
+	<target name="set-gwt-env" depends="check-env" if="gwt-env-exist">
+		<path id="gwt.classpath">
+			<fileset dir="${env.GWT_HOME}/" includes="*.jar"/>
+		</path>
+	</target>
+	
+	<target name="set-portal-env" depends="check-env" if="portal-env-exist">
+		<path id="portal.classpath">
+			<fileset dir="${env.PORTAL_HOME}" includes="*.jar"/>
+		</path>
+	</target>	
+	
+	<target name="setenv" depends="set-gwt-env, set-portal-env">
+		<!-- print out the computed classpath -->
+		<pathconvert 
+			pathsep="${line.separator}|-- " 
+			property="classpath.echo"
+			refid="classpath"
+		/>
+		<echo message="Computed Classpath"/>
+		<echo message="|-- ${classpath.echo}"/>
+	</target>
+	
+	
+	
+	<!-- ================================================================== -->
+	<!-- ===                           CLEAN                            === -->
+	<!-- ================================================================== -->	
+	<target name="clean">
+		<delete dir="${classes.dir}"/>
+		<delete dir="${gwt-out.dir}"/>
+		<delete dir="${javadoc.dir}"/>
+		<delete dir="${build.dir}"/>
+	</target>
+
+	
+	<!-- ================================================================== -->
+	<!-- ===                           COMPILE                          === -->
+	<!-- ================================================================== -->		
+	<target name="compile" depends="setenv">
+		<mkdir dir="${classes.dir}"/>
+		<javac
+			classpathref="classpath"
+			compiler="${javac.compiler}"
+			debug="${javac.debug}"
+			deprecation="${javac.deprecation}"
+			destdir="${classes.dir}"
+			nowarn="${javac.nowarn}"
+			srcdir="${src.dir}"
+		/>
+	</target>
+
+	
+	<!-- ================================================================== -->
+	<!-- ===                         GWT-COMPILE                        === -->
+	<!-- ================================================================== -->	
+	<target name="gwt-compile" depends="compile">
+		<mkdir dir="${gwt-out.dir}"/>
+		<java classname="${gwt.compiler}" fork="true" >
+			<classpath refid="classpath" />
+			<jvmarg value="-Xmx500M" />
+			
+			<arg value="-war" />
+			<arg value="${gwt-out.dir}" />
+
+			<arg value="${gwt-module}"/>
+		</java>
+	</target>
+
+
+	<!-- ================================================================== -->
+	<!-- ===                            WAR                             === -->
+	<!-- ================================================================== -->	
+	<target name="war" depends="compile">
+		<mkdir dir="${build.dir}" />
+		<zip
+			basedir="war"
+			destfile="${build.dir}/${war.filename}.war"
+			excludes="**/WEB-INF/src/**"
+		/>
+	</target>
+
+	
+	<!-- ================================================================== -->
+	<!-- ===                            JAVADOC                         === -->
+	<!-- ================================================================== -->	
+	<target name="javadoc" depends="setenv">
+		<mkdir dir="${javadoc.dir}"/>
+		<javadoc sourcepath="${src.dir}"
+			classpathref="classpath"
+			destdir="${javadoc.dir}"
+			author="true"
+			version="true"
+			splitindex="true"
+			use="true"
+			maxmemory="180m"
+			windowtitle="${javadoc.windowtitle}"
+			doctitle="${javadoc.doctitle}">
+		</javadoc>
+	</target> 
+	
+	<!-- ================================================================== -->
+		<!-- ===                        D4S-DEPLOY                          === -->
+		<!-- ================================================================== -->	
+		<target name="d4s-deploy">
+			<copy file="lib/${war.filename}.war" todir="${env.CATALINA_HOME}/../deploy" overwrite="true" />
+		</target>
+	
+</project>

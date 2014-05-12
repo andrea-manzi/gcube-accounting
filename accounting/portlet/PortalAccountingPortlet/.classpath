@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v5.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="com.sun.portlet.plugin.library.portlet20"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/GCUBE_LIBS"/>
+	<classpathentry kind="lib" path="lib/aslResourceExtension.jar"/>
+	<classpathentry kind="lib" path="lib/gchart.jar"/>
+	<classpathentry kind="lib" path="lib/GCUBELiveGrid.jar"/>
+	<classpathentry kind="lib" path="lib/org.gcube.common.csv4j-custom.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Common.messages"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Common.consumer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Common.consumer-library"/>
+	<classpathentry kind="lib" path="/home/andrea/gCore/lib/ApplicationSupportLibraryCore.jar"/>
+	<classpathentry kind="lib" path="lib/custom-portal-handler.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

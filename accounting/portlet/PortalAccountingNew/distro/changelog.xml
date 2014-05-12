@@ -1,0 +1,22 @@
+<ReleaseNotes>
+	<Changeset component="org.gcube.messaging.accounting.portalaccountingportlet.2-0-0" date="2014-04-04">
+			<Change>Added Statistical Manager records</Change>	
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting.portalaccountingportlet.1-9-1" date="2014-02-28">
+			<Change>fix gxt-charts dependency</Change>	
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting.portalaccountingportlet.1-9-0" date="2013-10-22">
+			<Change>Removed gCF deps</Change>
+			<Change>Adapted to new Widgets naming</Change>			
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting.portalaccountingportlet.1-8-0" date="2013-04-19">
+			<Change>Adapted to new Consumer CL</Change>
+			<Change>Moved to slf4j</Change>
+			
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting.portalaccountingportlet.1-7-0" date="2013-01-12">
+			<Change>Enhancements related to ticket https://issue.imarine.research-infrastructures.eu/ticket/67</Change>
+			<Change>new Maven based project structure</Change>
+			<Change>moved to GXT 3.0.0</Change>
+	</Changeset>
+</ReleaseNotes>

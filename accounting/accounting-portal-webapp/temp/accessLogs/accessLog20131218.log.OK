@@ -1,0 +1,19 @@
+2013-12-18 14:25:19, VRE -> /gcube/devNext/NextNext, USER -> angela.italiano, ENTRY_TYPE -> StatisticalManager_Execution, MESSAGE -> algorithmName = MOST_OBSERVED_SPECIES | executionOutcome = DONE | executionSecondsTime = 22
+2013-12-18 14:25:19, VRE -> /gcube/devNext/NextNext, USER -> angela.italiano, ENTRY_TYPE -> StatisticalManager_Import, MESSAGE -> fileName = test | fileType = CSV
+2013-12-18 14:25:19, VRE -> /d4science.research-infrastructures.eu, USER -> massimiliano.assante, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 14:25:38, VRE -> /d4science.research-infrastructures.eu, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 14:27:15, VRE -> /d4science.research-infrastructures.eu/gCubeApps/DocumentsWorkflow, USER -> massimiliano.assante, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 14:46:07, VRE -> /d4science.research-infrastructures.eu, USER -> massimiliano.assante, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 14:46:25, VRE -> /d4science.research-infrastructures.eu/gCubeApps/DocumentsWorkflow, USER -> massimiliano.assante, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 14:47:02, VRE -> /d4science.research-infrastructures.eu, USER -> massimiliano.assante, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:33:13, VRE -> /d4science.research-infrastructures.eu/FARM/VME-DB, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:41:29, VRE -> /gcube/devsec/devVRE, USER -> test.user, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:42:56, VRE -> /d4science.research-infrastructures.eu, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:43:12, VRE -> /d4science.research-infrastructures.eu/FARM/VME-DB, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:51:25, VRE -> /d4science.research-infrastructures.eu, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:56:17, VRE -> /d4science.research-infrastructures.eu, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:57:35, VRE -> /d4science.research-infrastructures.eu/gCubeApps/iSearch, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:58:25, VRE -> /d4science.research-infrastructures.eu, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 16:58:28, VRE -> /d4science.research-infrastructures.eu/FARM/VME-DB, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 17:14:09, VRE -> /d4science.research-infrastructures.eu/gCubeApps/DocumentsWorkflow, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre
+2013-12-18 17:14:30, VRE -> /d4science.research-infrastructures.eu/gCubeApps, USER -> andrea.manzi, ENTRY_TYPE -> Login_To_VRE, MESSAGE -> First login to the vre

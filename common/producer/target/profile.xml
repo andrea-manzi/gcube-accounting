@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Resource>
+    <ID/>
+    <Type>Service</Type>
+    <Profile>
+    	<Description>The gCube Messaging producer</Description>
+        <Class>Messaging</Class>
+        <Name>producer</Name>
+        <Version>1.0.0</Version>
+        <Packages>
+            <Software>
+            	<Description>The gCube messging producer</Description>
+            	<Name>producer</Name>
+				<Version>1.2.1-SNAPSHOT</Version>
+				<MavenCoordinates>
+					<groupId>org.gcube.messaging</groupId>
+					<artifactId>producer</artifactId>
+					<version>1.2.1-SNAPSHOT</version>
+				</MavenCoordinates>
+				<MultiVersion value="true"/>
+				<Mandatory level="GHN"/>
+				<Shareable level="VO"/>
+				<GHNRequirements>
+					<Requirement category="Site" operator="ge" requirement="string" value="java1.5"/>
+				</GHNRequirements>
+				<SpecificData>text</SpecificData>
+				<Type>library</Type>
+				<Files>
+					<File>producer-1.2.1-SNAPSHOT.jar</File>
+				</Files>
+			</Software> 
+        </Packages>
+    </Profile>
+</Resource>
+

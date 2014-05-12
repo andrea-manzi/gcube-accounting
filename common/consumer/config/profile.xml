@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Resource>
+    <ID/>
+    <Type>Service</Type>
+    <Profile>
+    	<Description>The gCube Messaging Consumer</Description>
+        <Class>Messaging</Class>
+        <Name>Consumer</Name>
+        <Version>1.0.0</Version>
+        <Packages>
+            <Main>
+                <Description>The gCube Messaging Consumer Service</Description>
+                <Name>Consumer</Name>
+                <Version>1.9.2-SNAPSHOT</Version>
+                 <MavenCoordinates>
+					<groupId>org.gcube.messaging</groupId>
+					<artifactId>consumer-service</artifactId>
+					<version>1.9.2-SNAPSHOT</version>
+				</MavenCoordinates>
+                <Mandatory level="VO"/>
+				<Shareable level="VO"/>
+				<GHNRequirements>
+					<Requirement category="Site" requirement="string" value="java1.7" operator="ge"/>
+				</GHNRequirements>
+				<GARArchive>consumer-service-1.9.2-SNAPSHOT.gar</GARArchive>
+                <PortType>
+                	<Name>gcube/messaging/common/consumer/MessagingConsumer</Name>
+                    	<Security/>			
+						<WSDL/>
+            	</PortType>
+            </Main>
+            <Software>
+            	<Description>Stub classes for interfacing to the Messaging Consumer</Description>
+            	<Name>Consumer-stubs</Name>
+				<Version>1.9.2-SNAPSHOT</Version>
+				 <MavenCoordinates>
+					<groupId>org.gcube.messaging</groupId>
+					<artifactId>consumer-stubs</artifactId>
+					<version>1.9.2-SNAPSHOT</version>
+				</MavenCoordinates>
+				<MultiVersion value="true"/>
+				<Mandatory level="GHN"/>
+				<Shareable level="VO"/>
+				<GHNRequirements>
+					<Requirement category="Site" operator="ge" requirement="string" value="java1.7"/>
+				</GHNRequirements>
+				<SpecificData>text</SpecificData>
+				<Type>library</Type>
+				<Files>
+					<File>consumer-stubs-1.9.2-SNAPSHOT.jar</File>
+				</Files>
+			</Software> 
+        </Packages>
+    </Profile>
+</Resource>

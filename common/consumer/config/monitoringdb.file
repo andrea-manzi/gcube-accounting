@@ -1,0 +1,81 @@
+<root>	
+ 	<GHN>
+ 	CREATE TABLE IF NOT EXISTS GHNMessage (
+ 							MessageId									INTEGER NOT NULL auto_increment,
+ 							GHNName                                     VARCHAR(64) NOT NULL,
+ 	                        testType                          			VARCHAR(64) NOT NULL,
+ 	                        description									VARCHAR(128) NOT NULL,
+ 	                        result                                      VARCHAR(256) NOT NULL,
+ 	                        scope                                       VARCHAR(128) NOT NULL,
+ 	                        date										VARCHAR(64) NOT NULL,
+  	                        time										VARCHAR(64) NOT NULL,
+  	                        PRIMARY KEY (MessageId),
+  	                        INDEX(GHNName),
+  	                        INDEX(testType,description),
+  	                        INDEX(date)
+ 	                );
+ 	</GHN>
+	<RI>
+ 	CREATE TABLE IF NOT EXISTS RIMessage (
+ 							MessageId									INTEGER NOT NULL auto_increment,
+ 							ServiceName                                 VARCHAR(64) NOT NULL,
+ 							ServiceClass                                VARCHAR(64) NOT NULL,
+ 							GHNName										VARCHAR(64) NOT NULL,
+ 							description									VARCHAR(128) NOT NULL,  
+ 	                        testType                          			VARCHAR(64) NOT NULL,
+ 	                        result                                      VARCHAR(128) NOT NULL,
+   	                        scope                                       VARCHAR(128) NOT NULL,
+ 	                        date										VARCHAR(64) NOT NULL,
+  	                        time										VARCHAR(64) NOT NULL,
+  	                        PRIMARY KEY (MessageId)
+ 	                );
+ 	</RI>
+ 	<NOTIFICATION>
+ 	CREATE TABLE IF NOT EXISTS NOTIFICATION (
+ 							Id											INTEGER NOT NULL auto_increment,
+ 							GHNName										VARCHAR(64) NOT NULL,
+							ServiceName									VARCHAR(64),
+ 							ServiceClass								VARCHAR(64),
+ 	                        testType                          			VARCHAR(64) NOT NULL,
+ 	                        testSubType									VARCHAR(64) NOT NULL,
+ 	                        scope										VARCHAR(128) NOT NULL,
+ 	                        message                                     VARCHAR(128) NOT NULL,
+ 	                        date										VARCHAR(64) NOT NULL,
+  	                        time										VARCHAR(64) NOT NULL,
+  	                        PRIMARY KEY (Id),
+  	                        INDEX(testType),
+  	                        INDEX(testSubType)
+ 	                );
+ 	</NOTIFICATION>
+ 	<DOMAIN>
+ 	CREATE TABLE IF NOT EXISTS DOMAIN (
+ 							Name 										VARCHAR(256) NOT NULL,
+ 							SiteName									VARCHAR(128) ,							 	                         	                     			    
+ 	                        PRIMARY KEY (Name)
+ 							
+ 	                );
+ 	</DOMAIN>
+ 	<USER>
+ 	CREATE TABLE IF NOT EXISTS USER (
+ 							Email 										VARCHAR(256) NOT NULL,
+ 							Name										VARCHAR(128) NOT NULL,
+ 							Scope										VARCHAR(128) NOT NULL,
+ 							ReceiveNotification							BOOLEAN NOT NULL,							 	                         	                     			    
+ 							ReceiveSummary								BOOLEAN NOT NULL,
+ 							Admin										BOOLEAN NOT NULL,
+ 	                        PRIMARY KEY (Email,Scope)
+ 	                );
+ 	</USER>
+ 	<USERDOMAIN>
+ 	CREATE TABLE IF NOT EXISTS USERDOMAIN (
+ 							Email 										VARCHAR(256) NOT NULL,
+ 							Name										VARCHAR(256) NOT NULL,
+ 							Scope										VARCHAR(128) NOT NULL,
+ 							PRIMARY KEY (Email, Name,Scope),
+							FOREIGN KEY (Name) REFERENCES DOMAIN(Name),
+							FOREIGN KEY (Scope) REFERENCES USER(Scope),
+							FOREIGN KEY (Email) REFERENCES USER(Email)
+ 	                );
+ 	</USERDOMAIN>
+ </root>
+ 	

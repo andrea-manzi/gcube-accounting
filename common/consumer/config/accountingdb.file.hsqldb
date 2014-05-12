@@ -1,0 +1,161 @@
+<root>
+	<NODEACCOUNTING>
+	CREATE TABLE NODEACCOUNTING (
+							GHNName                                     VARCHAR(64) NOT NULL,
+							ServiceClass                       			VARCHAR(64) NOT NULL,
+ 	                        ServiceName									VARCHAR(128) NOT NULL,
+ 	                        callerScope 	                            VARCHAR(128) NOT NULL,
+ 	                        startDate									DATETIME  NOT NULL,
+ 	                        endDate										DATETIME  NOT NULL,
+ 	                        timeframe									INTEGER  NOT NULL,
+ 	                        invocationNumber							INTEGER  NOT NULL,
+ 	                        averageInvocationTime						FLOAT  NOT NULL,
+ 	                        callerIP									VARCHAR(128) NOT NULL,
+ 	                        PRIMARY KEY (GHNName,ServiceClass,ServiceName,callerScope,startDate,callerIP)
+ 	                    	);
+	</NODEACCOUNTING>
+	<PORTAL>
+	CREATE TABLE PORTALACCOUNTING (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							user										VARCHAR(64) NOT NULL,
+							vre											VARCHAR(128) NOT NULL,
+							date										DATE NOT NULL,
+							time										TIME NOT NULL,
+							type										VARCHAR(64) NOT NULL
+					);
+	</PORTAL>
+	<COLLECTION>
+	CREATE TABLE COLLECTION (
+							Id											VARCHAR(64) NOT NULL ,
+							identifier									VARCHAR(128) NOT NULL,
+							name										VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, identifier, name),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+							);
+   	</COLLECTION>
+   	<TERM>
+	CREATE TABLE TERM (
+							Id											VARCHAR(64) NOT NULL ,
+							name										VARCHAR(128) NOT NULL,
+							value										VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, name, value),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+							);
+   	</TERM>
+   	<ADVANCEDSEARCH>
+	CREATE TABLE ADVANCEDSEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							operator									VARCHAR(10) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</ADVANCEDSEARCH>
+	<SIMPLESEARCH>
+	CREATE TABLE SIMPLESEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							termValue									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</SIMPLESEARCH>
+	<BROWSE>
+	CREATE TABLE BROWSE (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							browseBy									VARCHAR(128) NOT NULL,
+							isDistinct									BOOLEAN,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</BROWSE>
+	<LOGIN>
+	CREATE TABLE LOGIN (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							message 									VARCHAR(128) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</LOGIN>
+	<GENERIC>
+	CREATE TABLE GENERIC (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							message 									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GENERIC>
+	<CONTENT>
+	CREATE TABLE CONTENT (
+							Id											VARCHAR(64) NOT NULL ,
+							identifier									VARCHAR(128) NOT NULL,
+							name										VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, identifier, name),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+							);
+   	</CONTENT>
+   		<QUICKEARCH>
+	CREATE TABLE QUICKSEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							termValue									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</QUICKEARCH>
+	<GOOGLESEARCH>
+	CREATE TABLE GOOGLESEARCH (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							termValue									VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GOOGLESEARCH>
+	<AIS>
+	CREATE TABLE  AIS (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							IDENTIFIER									VARCHAR(256) NOT NULL,
+							NAME										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</AIS>
+	<TS>
+	CREATE TABLE   TS (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							TITLE										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</TS>
+	<HL>
+	CREATE TABLE HL (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							IDENTIFIER									VARCHAR(256) NOT NULL,
+							NAME										VARCHAR(256) NOT NULL,
+							TYPE										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</HL>
+	<GCUBEUSERSADDRESSEES>
+	CREATE TABLE GCUBEUSERSADDRESSEES (
+							Id											VARCHAR(64) NOT NULL,
+							NAME										VARCHAR(256) NOT NULL,
+							VRE										    VARCHAR(256) NOT NULL,
+							PRIMARY KEY (Id, NAME, VRE),
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</GCUBEUSERSADDRESSEES>
+	<ANNOTATION>
+	CREATE TABLE ANNOTATION (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							NAME										VARCHAR(256) NOT NULL,
+							ACTION										VARCHAR(256) NOT NULL,
+							SUBTYPE										VARCHAR(256) NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</ANNOTATION>	
+		<SM>
+	CREATE TABLE  SM (
+							Id											VARCHAR(64) NOT NULL PRIMARY KEY,
+							SUBTYPE										VARCHAR(256),
+							FILENAME									VARCHAR(256),
+							FILETYPE									VARCHAR(256),	
+							ALGORITHMNAME								VARCHAR(256),	
+							EXECUTIONOUTCOME							VARCHAR(256),
+							EXECUTIONTIME								INTEGER  NOT NULL,
+							FOREIGN KEY (Id) REFERENCES PORTALACCOUNTING(Id)
+					);
+	</SM>																																										
+</root>

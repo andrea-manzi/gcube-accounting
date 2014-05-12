@@ -1,0 +1,43 @@
+The gCube System - Messaging Consumer 
+------------------------------------------------------------
+
+This work is partially funded by the European Commission in the
+context of the D4Science project (www.d4science.eu), under the 1st call of FP7 IST priority.
+
+
+Authors
+-------
+ 
+* Andrea Manzi (andrea.manzi@cern.ch), CERN
+  CERN, IT Department, Geneva.
+
+
+Version and Release Date
+------------------------
+
+v. 1.1.0 (14-05-2010)
+
+v. 1.0.1 (20-11-2009)
+
+v. 1.0.0 (01-10-2009)
+
+
+Description
+-----------
+
+Download information
+--------------------
+
+Documentation 
+-------------
+
+https://gcube.wiki.gcube-system.org/gcube/index.php/Messaging_Infrastructure#Node_Accounting_Probe
+
+Licensing
+---------
+
+This software is licensed under the terms you may find in the file named "LICENSE" in this directory.
+
+
+
+

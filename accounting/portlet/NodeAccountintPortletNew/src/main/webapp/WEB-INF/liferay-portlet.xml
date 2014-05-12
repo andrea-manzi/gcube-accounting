@@ -1,0 +1,14 @@
+<liferay-portlet-app>
+<portlet>
+     <portlet-name>NodeAccountingUI</portlet-name>
+     <icon>/icon.png</icon> //optional 
+     <layout-cacheable>false</layout-cacheable>  //for loading the new portlet
+     <instanceable>false</instanceable>  //to use one portlet instance for the D4S portal
+     <ajaxable>false</ajaxable>  //it is need for the correct rendering of the GWT portlet
+     <header-portlet-css>/NodeAccountingUI.css</header-portlet-css>
+</portlet>
+<role-mapper>
+		<role-name>administrator</role-name>
+		<role-link>Administrator</role-link>
+</role-mapper>
+</liferay-portlet-app>

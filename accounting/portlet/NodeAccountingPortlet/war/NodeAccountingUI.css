@@ -1,0 +1,56 @@
+/** Add css rules here for your application. */
+
+.server_icon { 
+ background-image: url(icons/server.png)!important; 
+ padding-right: 5px; 
+ margin: 0 !important; 
+}
+
+.server_root { 
+ background-image: url(icons/server_uncompressed.png)!important; 
+ padding-right: 5px; 
+ margin: 0 !important; 
+}
+
+.service_class { 
+ background-image: url(icons/application_home.png)!important; 
+ padding-right: 5px; 
+ margin: 0 !important; 
+}
+
+.service_name { 
+ background-image: url(icons/cog.png)!important; 
+ padding-right: 5px; 
+ margin: 0 !important; 
+} 
+/** Example rules used by the template application (remove for your app) */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}

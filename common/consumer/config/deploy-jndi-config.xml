@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndiConfig xmlns="http://wsrf.globus.org/jndi/config">
+
+	<service name="gcube/messaging/common/consumer">
+
+		<environment name="configDir" value="@config.dir@" type="java.lang.String"
+			override="false" />
+			
+		<environment name="SubscriptionsMapping" value="ConsumerSubscriptions.properties"
+			type="java.lang.String" override="false" />
+		
+
+		<!-- DB Structure file -->
+		<environment name="AccountingDBFile" value="accountingdb.file.hsqldb"
+			type="java.lang.String" override="false" />
+
+		<environment name="MonitoringDBFile" value="monitoringdb.file.hsqldb"
+			type="java.lang.String" override="false" />
+
+		<environment name="AccountingSystemDBFile" value="accountingsystemdb.file.hsqldb"
+			type="java.lang.String" override="false" />
+
+		<environment name="MailTemplatesFile" value="mailTemplates.xml"
+			type="java.lang.String" override="false" />
+
+		<environment name="NotifiybyMail" value="false"
+			type="java.lang.Boolean" override="true" />
+
+		<environment name="httpServerBasePath" value="jetty/webapps"
+			type="java.lang.String" override="false" />
+
+		<environment name="httpServerPort" value="7200"
+			type="java.lang.String" override="false" />
+
+		<environment name="webServerClass"
+			value="org.gcube.messaging.common.consumer.webserver.impl.jetty.JettyWebServer"
+			type="java.lang.String" override="false" />
+
+		<environment name="monitorRoleString" value="Role=VO-Admin"
+			type="java.lang.String" override="false" />
+
+		<environment name="UseEmbeddedBroker" value="true"
+			type="java.lang.Boolean" override="false" />
+
+		<environment name="MailSummary" value="true" type="java.lang.Boolean"
+			override="true" />
+
+		<!--
+			<environment name="CustomTopics" value="gCube.>"
+			type="java.lang.String" override="false" /> <environment
+			name="CustomBrokerURL"
+			value="tcp://ui.grid.research-infrastructures.eu:6166"
+			type="java.lang.String" override="false" />
+		-->
+
+		<environment name="diskQuotaThreshold" value="1000000"
+			type="java.lang.Long" override="false" />
+
+		<environment name="virtualMemoryThreshold" value="20000000"
+			type="java.lang.Long" override="false" />
+
+		<environment name="cpuLoadThreshold" value="4"
+			type="java.lang.Double" override="false" />
+
+	
+			<environment name="Subscriptions"
+			value="GHN_MONITORING,RI_MONITORING,GHN_ACCOUNTING,PORTAL_ACCOUNTING,SYSTEM_ACCOUNTING"
+			type="java.lang.String" override="false" />
+	
+
+		<!--<environment name="Subscriptions" value="" type="java.lang.String"
+			override="false" /-->
+
+		<environment name="scheduledBackupInHours" value="24"
+			type="java.lang.String" override="false" />
+
+		<environment name="UseEmbeddedDB" value="true"
+			type="java.lang.Boolean" override="false" />
+
+		<environment name="DBUser" value="root" type="java.lang.String"
+			override="false" />
+
+		<environment name="DBPass" value="" type="java.lang.String"
+			override="false" />
+			
+		<environment name="DBHost" value="localhost" type="java.lang.String"
+			override="false" />
+
+		<environment name="DBPort" value="3306" type="java.lang.Long"
+			override="false" />	
+		
+		<environment name="MaxDBConnections" value="100" type="java.lang.Long"
+			override="false" />	
+		
+		<environment name="portalBaseURL" value="http://grid8.4dsoft.hu:8080" type="java.lang.String"
+			override="false" />
+			
+		<environment name="siteManagerRoleName" value="Site-Manager" type="java.lang.String"
+			override="false" />
+			
+		<environment name="infraManagerRoleName" value="Infrastructure-Manager" type="java.lang.String"
+			override="false" />
+			
+		<environment name="connectToUserManagementDB" value="false" type="java.lang.Boolean"
+			override="false" />
+			
+		<environment name="receiveNotificationCustomAttributeName" value="receive_notifications" type="java.lang.String"
+			override="false" />
+		<environment name="receiveSummaryCustomAttributeName" value="receive_summary" type="java.lang.String"
+			override="false" />
+		<environment name="siteNameCustomAttributeName" value="site" type="java.lang.String"
+			override="false" />	
+			
+		<environment name="endpointWaitingTime" value="60" type="java.lang.Long"
+			override="false" />
+			
+		<environment name="endpointRefreshTime" value="1800" type="java.lang.Long"
+			override="false" />
+			
+		
+
+	</service>
+	<service name="gcube/messaging/common/consumer/MessagingConsumer">
+		<environment name="name" value="ConsumerMonitor" type="java.lang.String"
+			override="false" />
+
+		<resource name="home"
+			type="org.gcube.messaging.common.consumer.MessagingConsumerHome">
+
+			<resourceParams>
+
+				<parameter>
+					<name>factory</name>
+					<value>org.globus.wsrf.jndi.BeanFactory</value>
+				</parameter>
+				<parameter>
+					<name>resourceClass</name>
+					<value>org.gcube.messaging.common.consumer.WSResource</value>
+				</parameter>
+				<parameter>
+					<name>sweeperDelay</name>
+					<value>10000</value>
+				</parameter>
+			</resourceParams>
+		</resource>
+
+	</service>
+
+</jndiConfig>

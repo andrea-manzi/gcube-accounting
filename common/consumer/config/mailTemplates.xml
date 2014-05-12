@@ -1,0 +1,10 @@
+<TEMPLATES>
+	<CPU_LOAD>Info: during the last 15 minutes CPU was overloaded
+		***OVERLOAD*** %</CPU_LOAD>
+	<DISK_QUOTA>Info: Limited Disk Space (Space free: ***SPACE*** MB)</DISK_QUOTA>
+	<DISK_QUOTA_NOT_ASSESSABLE>Info: Disk Quota Not Assessable ( Disk Quota
+		= 0 OR limited number of free file descriptors on the GHN)</DISK_QUOTA_NOT_ASSESSABLE>
+	<MEMORY_AVAILABLE>Info: Limited Virtual Memory Available (Free:
+		***SPACE*** Bytes)</MEMORY_AVAILABLE>
+	<NOTIFICATION>Info: ***INFO***</NOTIFICATION>
+</TEMPLATES>

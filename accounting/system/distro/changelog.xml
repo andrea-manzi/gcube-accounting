@@ -1,0 +1,14 @@
+<ReleaseNotes>
+	<Changeset component="org.gcube.messaging.accounting-system.1-2-0" date="2014-01-31">
+		<Change>refactored to apply changes to Producer component</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting-system.1-1-1" date="2013-04-19">
+		<Change>Fixing ranges to use new producer</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting-system.1-1-0" date="2013-01-13">
+		<Change>Maven based version</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.accounting-system.1-0-0" date="2011-01-28">
+		<Change>First Version</Change>
+	</Changeset>
+</ReleaseNotes>

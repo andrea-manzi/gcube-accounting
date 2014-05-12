@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	<servlet>
+		<servlet-name>AccountingUI</servlet-name>
+		<servlet-class>org.gcube.messaging.accounting.portalaccountingportlet.server.AccountingUI</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AccountingUI</servlet-name>
+		<url-pattern>/portalaccountingui/AccountingUI</url-pattern>
+	</servlet-mapping>
+	
+	  <!-- quicktourServlet -->
+	<servlet>
+		<servlet-name>quicktourServlet</servlet-name>
+		<servlet-class>org.gcube.portlets.widgets.guidedtour.server.TourServiceImpl</servlet-class>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>quicktourServlet</servlet-name>
+		<url-pattern>/portalaccountingui/quicktourServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExportServlet</servlet-name>
+		<servlet-class>org.gcube.messaging.accounting.portalaccountingportlet.server.ExportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExportServlet</servlet-name>
+		<url-pattern>/portalaccountingui/ExportServlet</url-pattern>
+	</servlet-mapping>
+</web-app>

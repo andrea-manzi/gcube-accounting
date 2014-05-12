@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Exclude>
+<Contains>Manager_</Contains>
+<Equal>test.user</Equal>
+<Equal>user</Equal>
+<Equal>AquaMaps_generic_User</Equal>
+<Equal>null</Equal>
+<Equal>fake.session</Equal>
+</Exclude>

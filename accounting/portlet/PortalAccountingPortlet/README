@@ -1,0 +1,36 @@
+The gCube System - Portlets - Portal  Accounting Portlet
+------------------------------------------------------------
+
+This work has been partially supported by the following European projects: DILIGENT (FP6-2003-IST-2), 
+D4Science (FP7-INFRA-2007-1.2.2), D4Science-II (FP7-INFRA-2008-1.2.2), iMarine (FP7-INFRASTRUCTURES-2011-2), 
+and EUBrazilOpenBio (FP7-ICT-2011-EU-Brazil).
+
+Authors
+-------
+
+* Andrea Manzi (andrea.manzi@cern.ch), CERN
+  CERN, IT Department, Geneva.
+
+
+Version and Release Date
+------------------------
+
+v. 1.0.0, 31/01/2010
+
+Description
+-----------
+
+
+Download information
+--------------------
+
+Binaries can be downloaded from:
+http://software.d4science.research-infrastructures.eu/
+
+Documentation 
+-------------
+https://gcube.wiki.gcube-system.org/gcube/index.php/Messaging_Infrastructure#Portal_Accounting_portlet
+Licensing
+---------
+
+This software is licensed under the terms you may find in the file named "LICENSE" in this directory. 

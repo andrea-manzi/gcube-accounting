@@ -1,0 +1,9 @@
+<ReleaseNotes>
+	<Changeset component="org.gcube.messaging.producer-fws.1-0-0" date="2014-01-31">
+			<Change>FWS version of the messaging producer</Change>
+	</Changeset>
+	<Changeset component="org.gcube.messaging.producer-fws.1-0-1" date="2014-xx-xx">
+			<Change>changed visibility of stopConnection method</Change>
+			<Change>Added shutdown hook</Change>
+	</Changeset>
+</ReleaseNotes>

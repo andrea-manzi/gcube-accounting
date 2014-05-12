@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.gcube.messsaging</groupId>
+	<artifactId>social-accounting</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<dependencies>
+
+		<dependency>
+			<groupId>org.gcube.portal</groupId>
+			<artifactId>social-networking-library</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gcube.resources.discovery</groupId>
+			<artifactId>discovery-client</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gcube.core</groupId>
+			<artifactId>common-scope</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gcube.resources</groupId>
+			<artifactId>common-gcore-resources</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gcube.resources.discovery</groupId>
+			<artifactId>ic-client</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+</project>

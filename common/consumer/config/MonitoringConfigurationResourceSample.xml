@@ -1,0 +1,28 @@
+<Resource>
+	<ID>3a0b4dc0-8e2f-11de-8907-e7af4122e74f</ID>
+	<Type>GenericResource</Type>
+	<Profile>
+		<SecondaryType>MONITORING_CONFIGURATION</SecondaryType>
+		<Name>Monitoring configuration</Name>
+		<Description>Monitoring configuration for /testing scope</Description>
+		<Body>
+			<Scope name="/testing">
+				<CPULoad>3.0</CPULoad>
+				<DiskQuota>1000000</DiskQuota>
+				<VirtualMemory>20000000</VirtualMemory>
+				<NotificationConfiguration>
+					<Domain name="4dsoft.hu" site="4DSOFT">
+						<User email="andrea.manzi@cern.ch" name="andrea" notify="true"
+							receiveSummary="true" admin="true" />
+						<User email="andor.dirner@4dsoft.hu" name="andor" notify="true"
+							receiveSummary="false" admin="false" />
+					</Domain>
+					<Domain name="cern.ch" site="CERN">
+						<User email="andrea.manzi@cern.ch" name="andrea" notify="true"
+							receiveSummary="false" admin="true" />
+					</Domain>
+				</NotificationConfiguration>
+			</Scope>
+		</Body>
+	</Profile>
+</Resource>

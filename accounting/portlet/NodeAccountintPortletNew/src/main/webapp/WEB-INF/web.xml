@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <servlet>
+    <servlet-name>NodeAccountingService</servlet-name>
+    <servlet-class>org.gcube.messaging.accounting.nodeaccountingportlet.server.NodeAccountingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>NodeAccountingService</servlet-name>
+    <url-pattern>/nodeaccountingui/NodeAccountingService</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  <servlet-name>QueryServlet</servlet-name>
+  <servlet-class>org.gcube.messaging.accounting.nodeaccountingportlet.server.QueryServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>QueryServlet</servlet-name>
+  <url-pattern>/nodeaccountingui/QueryServlet</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+  <servlet-name>StatisticsServlet</servlet-name>
+  <servlet-class>org.gcube.messaging.accounting.nodeaccountingportlet.server.StatisticsServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>StatisticsServlet</servlet-name>
+  <url-pattern>/nodeaccountingui/StatisticsServlet</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+  <servlet-name>ExportServlet</servlet-name>
+  <servlet-class>org.gcube.messaging.accounting.nodeaccountingportlet.server.ExportServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ExportServlet</servlet-name>
+  <url-pattern>/nodeaccountingui/ExportServlet</url-pattern>
+</servlet-mapping>
+
+
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>NodeAccountingUI.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
